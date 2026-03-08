@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Short URL Generator</title>
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        width: 800px;
+        margin: 60px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      form {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 25px;
+      }
+
+      input {
+        flex: 1;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      button {
+        padding: 10px 18px;
+        border: none;
+        background: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background: #0056b3;
+      }
+
+      .generated-link {
+        margin-top: 15px;
+        padding: 12px;
+        background: #e9f5ff;
+        border-left: 4px solid #007bff;
+      }
+
+      a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 30px;
+      }
+
+      th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #007bff;
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+
+      <h1>URL Shortener</h1>
+
+      <form method="POST" action="/api/shortURL">
+        <input
+          type="text"
+          name="url"
+          placeholder="https://example.com"
+          required
+        />
+        <button type="submit">Generate</button>
+      </form>
+
+      <% if(locals.id) { %>
+      <div class="generated-link">
+        Short URL Generated :
+        <a
+          href="http://localhost:8001/api/<%= id %>"
+          target="_blank"
+        >
+          http://localhost:8001/api/<%= id %>
+        </a>
+      </div>
+      <% } %>
+
+    </div>
+  </body>
+</html>
