@@ -13,8 +13,8 @@ app.use(express.urlencoded({ extended: false }));
 
 const PORT = 8001;
 
-connectToMongoDB("mongodb://localhost:27017/short-url").then(() =>
-  console.log("MongiDB Connected")
+connectToMongoDB("mongodb+srv://sharmaswarnim24_db_user:uMWy2Poed5hLdgJe@cluster0.03vgyq0.mongodb.net/short-url").then(() =>
+  console.log("MongoDB Connected")
 );
 
 /** for short urls */
