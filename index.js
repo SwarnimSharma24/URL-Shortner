@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const urlRouter = require("./routes/url");
@@ -11,9 +12,9 @@ app.set("views", path.resolve("./views"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const PORT = 8001;
+const PORT = process.env.PORT;
 
-connectToMongoDB("mongodb+srv://sharmaswarnim24_db_user:uMWy2Poed5hLdgJe@cluster0.03vgyq0.mongodb.net/short-url").then(() =>
+connectToMongoDB(process.env.MONGO_URL).then(() =>
   console.log("MongoDB Connected")
 );
 
