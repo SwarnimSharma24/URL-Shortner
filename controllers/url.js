@@ -12,10 +12,12 @@ const generateNewShortUrl = async (req, res) => {
     redirectUrl: req.body.url,
     vistiHistory: [],
   });
-
-  return res.render('home', {
-    id: shortID
-  })
+  const allUrls = await URL.find({});
+  return res.render("home", {
+    id: shortID,
+    urls: allUrls,
+    req,
+  });
   // return res.json({ id: shortID });
 };
 
@@ -46,4 +48,4 @@ const getAnalaytics = async (req, res) => {
   });
 };
 
-module.exports = { generateNewShortUrl, shortIdLinkView ,getAnalaytics};
+module.exports = { generateNewShortUrl, shortIdLinkView, getAnalaytics };

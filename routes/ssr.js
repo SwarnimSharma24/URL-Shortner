@@ -5,10 +5,11 @@ const path = require("path");
 const app = express();
 
 /** routes for all ssr files */
-router.get("/",async (req, res) => {
-    const AllData =  await URL.find({})
-  return res.render("home", {
-    url: AllData
+router.get("/", async (req, res) => {
+  const allUrls = await URL.find({});
+  res.render("home", {
+    urls: allUrls,
+    req: req,
   });
 });
 

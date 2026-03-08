@@ -12,7 +12,7 @@ app.set("views", path.resolve("./views"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT  || 8000;
 
 connectToMongoDB(process.env.MONGO_URL).then(() =>
   console.log("MongoDB Connected")
@@ -24,6 +24,6 @@ app.use("/api", urlRouter);
 /** for SSR */
 app.use("/", ssrRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Your server is listenin on http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
